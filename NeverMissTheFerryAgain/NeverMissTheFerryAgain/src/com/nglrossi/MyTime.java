@@ -49,16 +49,23 @@ public class MyTime {
 		// TODO
 		return true;
 	}
-
-	public long toMillis(boolean ignoreDst) {
+	
+	public long toSeconds(boolean ignoreDst) {
 		// adding month and year adding the current ones, might need to review
 		// for DST but not a biggie right now
-		Time theRealNow = new Time();
-		Time tempNow = new Time();
-		tempNow.setToNow();
-		theRealNow.set(second, minute, hour, tempNow.monthDay, tempNow.month,
-				tempNow.year);
-		return theRealNow.toMillis(ignoreDst);
+		
+		return second + (minute * 60) + (hour * 60*60) + (weekDay * 24*60*60);
 	}
+
+//	public long toMillis(boolean ignoreDst) {
+//		// adding month and year adding the current ones, might need to review
+//		// for DST but not a biggie right now
+//		Time theRealNow = new Time();
+//		Time tempNow = new Time();
+//		tempNow.setToNow();
+//		theRealNow.set(second, minute, hour, tempNow.monthDay, tempNow.month,
+//				tempNow.year);
+//		return theRealNow.toMillis(ignoreDst);
+//	}
 
 }
