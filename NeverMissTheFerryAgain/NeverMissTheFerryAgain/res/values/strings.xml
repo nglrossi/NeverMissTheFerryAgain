@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Never Miss the Ferry Again</string>
+    <string name="action_settings">Settings</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="title_activity_display_message">My Message</string>
+    <string name="label_next_manly">Next Ferry to Manly</string>
+    <string name="label_next_circular_quay">Next Ferry to Circular Quay</string>
+    
+    
+
+</resources>
