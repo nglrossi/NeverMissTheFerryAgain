@@ -403,46 +403,53 @@ public class FerryTime {
 			ferryTime = getNextFerryToCircularQuayByTime(whatTime);
 		else
 			ferryTime = getNextFerryToManly(whatTime);
-		
+
 		long hrs, min, sec;
 		long tmpsec = 0;
-		
+
 		// check if the ferry is on the same day or add hours
 		if (ferryTime.weekDay >= whatTime.weekDay) {
 			tmpsec = ferryTime.toSeconds(false) - whatTime.toSeconds(false);
 		} else {
-			// I assume the Ferry is on the next day, but if new featureas are added to the app, I might have to review this method for a ferry in the future
-			tmpsec = ( ferryTime.toSeconds(false) + (60*60*24*7) ) - whatTime.toSeconds(false);			
+			// I assume the Ferry is on the next day, but if new featureas are
+			// added to the app, I might have to review this method for a ferry
+			// in the future
+			tmpsec = (ferryTime.toSeconds(false) + (60 * 60 * 24 * 7))
+					- whatTime.toSeconds(false);
 		}
-		
+
 		// convert back to hh:mm:ss
 		hrs = tmpsec / 3600;
 		min = (tmpsec % 3600) / 60;
-		sec = tmpsec % 60;		
-		
-		// string 
+		sec = tmpsec % 60;
+
+		// string
 		String str = "";
-		
-		// hours
-		if (hrs <10) str = str + "0";
-		str = str + Long.toString(hrs) + ":";
-		
+
+		// hours (show only if !=0)
+		if (hrs > 0) {
+			if (hrs < 10) str = str + "0";
+			str = str + Long.toString(hrs) + ":";
+		}
+
 		// minutes
-		if (min <10) str = str + "0";
-		str = str + Long.toString(min) + ":";		
+		if (min < 10)
+			str = str + "0";
+		str = str + Long.toString(min) + ":";
 
 		// seconds
-		if (sec <10) str = str + "0";
+		if (sec < 10)
+			str = str + "0";
 		str = str + Long.toString(sec);
-		
+
 		return str;
-		
-//		String debug = "";
-//		debug = debug + Integer.toString(theTime.hour) + ":";
-//		debug = debug + Integer.toString(theTime.minute) + ":";
-//		debug = debug + Integer.toString(theTime.second) + " - ";
-//		debug = debug + Integer.toString(theTime.weekDay);
-//		return debug;
+
+		// String debug = "";
+		// debug = debug + Integer.toString(theTime.hour) + ":";
+		// debug = debug + Integer.toString(theTime.minute) + ":";
+		// debug = debug + Integer.toString(theTime.second) + " - ";
+		// debug = debug + Integer.toString(theTime.weekDay);
+		// return debug;
 	}
 
 	public String countDownToCircularQuay(MyTime whatTime) {
